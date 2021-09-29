@@ -4,12 +4,14 @@ import java.text.ParseException;
 
 import com.example.springboot.JPAMysql.entities.Curso;
 import com.example.springboot.JPAMysql.entities.Usuario;
+import com.example.springboot.JPAMysql.repositories.CursoRepositorio;
 import com.example.springboot.JPAMysql.repositories.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+
+    @Autowired
+    private CursoRepositorio cursoRepositorio;
 
     @GetMapping("/inicio")
     public String inicio() {
@@ -64,6 +69,27 @@ public class UsuarioController {
         usuarioRepositorio.save(usuario);
 
         return "Usuario guardado correctamente forma 2";
+    }
+
+    @PutMapping("/incluirCurso/{idUsuario}/{idCurso}")
+    public String incluirCurso(@PathVariable int idUsuario,@PathVariable int idCurso){
+        Curso curso = null;
+        try {
+            curso = cursoRepositorio.findById(idCurso).get();
+        }catch (Exception e) {
+            return "Error recuperando informacion del curso";
+        }
+        Usuario usuario =null;
+        try {
+            usuario = usuarioRepositorio.findById(idUsuario).get();
+        }catch (Exception e) {
+            return "Error recuperando informacion del usuario";
+        }
+        if(usuario.getCursos() == null)
+            usuario.setCursos(new HashSet<>());
+        usuario.getCursos().add(curso);
+        usuarioRepositorio.save(usuario);
+        return "Curso incluido correctamente";
     }
 
     @PutMapping("/editar/{id}")

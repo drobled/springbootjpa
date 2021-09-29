@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,7 +29,7 @@ public class Usuario {
 
     @ManyToMany
     @JoinTable(name = "usuario_curso", joinColumns = @JoinColumn(name = "usuarioId"), inverseJoinColumns = @JoinColumn(name = "cursoId"))
-    private Set<Curso> cursos;
+    private Set<Curso> cursos = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
