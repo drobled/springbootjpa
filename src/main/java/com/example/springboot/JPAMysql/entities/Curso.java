@@ -13,7 +13,7 @@ import java.util.Set;
 @Getter
 public class Curso {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToMany(mappedBy = "cursos")
