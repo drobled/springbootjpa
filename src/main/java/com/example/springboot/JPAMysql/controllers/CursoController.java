@@ -39,6 +39,9 @@ public class CursoController {
         return "Curso y asignatura asignado correctamente";
     }
 
+    @PostMapping("/agregarOpinion")
+    
+
 
     @PostMapping("/agregarCurso")
     public String saveCurso(@RequestParam Map<String,String> params){

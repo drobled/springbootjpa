@@ -2,18 +2,18 @@ package com.example.springboot.JPAMysql.controllers;
 
 import java.text.ParseException;
 
+import com.example.springboot.JPAMysql.beans.UsuarioView;
 import com.example.springboot.JPAMysql.entities.Curso;
 import com.example.springboot.JPAMysql.entities.Usuario;
 import com.example.springboot.JPAMysql.repositories.CursoRepositorio;
 import com.example.springboot.JPAMysql.repositories.UsuarioRepositorio;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -31,8 +31,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/listar")
-    public Iterable<Usuario> getAllUsers(){
-        return usuarioRepositorio.findAll();
+    public List<UsuarioView> getAllUsers(){
+        List<UsuarioView> retorno = new ArrayList<>();
+        ModelMapper modelMapper = new ModelMapper();
+        for (Usuario usuario:usuarioRepositorio.findAll()) {
+            UsuarioView usuarioView = modelMapper.map(usuario,UsuarioView.class);
+            retorno.add(usuarioView);
+        }
+        return retorno;
     }
 
     @PostMapping("/agregar")

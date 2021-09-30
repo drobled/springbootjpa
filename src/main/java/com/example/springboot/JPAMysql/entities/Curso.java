@@ -1,9 +1,12 @@
 package com.example.springboot.JPAMysql.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -19,6 +22,7 @@ public class Curso {
     private int id;
 
     @ManyToMany(mappedBy = "cursos")
+    @JsonIgnore
     private Set<Usuario> usuarios;
 
     private String nombre;

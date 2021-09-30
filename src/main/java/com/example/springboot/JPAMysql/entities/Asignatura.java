@@ -20,9 +20,6 @@ public class Asignatura {
 
     private String nombre;
 
-    @ManyToOne
-    private Curso cursoId;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
