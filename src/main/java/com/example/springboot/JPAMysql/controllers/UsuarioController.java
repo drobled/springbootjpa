@@ -85,8 +85,6 @@ public class UsuarioController {
         }catch (Exception e) {
             return "Error recuperando informacion del usuario";
         }
-        if(usuario.getCursos() == null)
-            usuario.setCursos(new HashSet<>());
         usuario.getCursos().add(curso);
         usuarioRepositorio.save(usuario);
         return "Curso incluido correctamente";
