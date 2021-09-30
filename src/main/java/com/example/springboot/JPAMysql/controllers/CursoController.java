@@ -31,7 +31,7 @@ public class CursoController {
         Asignatura asignatura = new Asignatura();
         asignatura.setNombre(nombre);
         asignatura = asignaturaRepositorio.save(asignatura);
-         Curso curso = cursoRepositorio.findById(idCurso).get();
+        Curso curso = cursoRepositorio.findById(idCurso).get();
         if(curso == null)
             return "Curso no existe";
         curso.getAsignaturas().add(asignatura);
