@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document("clientes")
 @Setter
 @Getter
@@ -16,6 +18,8 @@ public class Cliente {
     private String nombre;
 
     private String direccion;
+
+    private List<Pelicula> peliculas;
 
 
 }
