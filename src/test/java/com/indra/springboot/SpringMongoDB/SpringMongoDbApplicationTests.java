@@ -1,10 +1,10 @@
-package com.example.springboot.JPAMysql;
+package com.indra.springboot.SpringMongoDB;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JpaMysqlApplicationTests {
+class SpringMongoDbApplicationTests {
 
 	@Test
 	void contextLoads() {
