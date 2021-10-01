@@ -1,13 +1,13 @@
-package com.indra.springboot.SpringMongoDB;
+package com.indra.springboot.SpringRedis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringMongoDbApplication {
+public class SpringRedisDbApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringMongoDbApplication.class, args);
+		SpringApplication.run(SpringRedisDbApplication.class, args);
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.indra.springboot.SpringMongoDB;
+package com.indra.springboot.SpringRedis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
