@@ -17,8 +17,8 @@ public class ClienteController {
     @PostMapping("/alta")
     public String altaLibro(@RequestParam Map<String, String> parametros) {
         Libro libro = new Libro();
-        libro.setTitulo("Tom Sawyer");
-        libro.setIsbn("123");
+        libro.setTitulo(parametros.get("titulo"));
+        libro.setIsbn(parametros.get("isbn"));
         redisTemplate.opsForValue().set(libro.getIsbn(),libro);
         return "Alta cliente correcta";
     }
