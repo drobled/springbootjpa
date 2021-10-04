@@ -19,6 +19,7 @@ public class Usuario {
     private int id;
 
     private String nombre;
+    private String clave;
     private String email;
     private String apellidos;
 

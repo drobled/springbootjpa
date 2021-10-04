@@ -10,4 +10,6 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Integer> {
 
     List<Usuario> findByNombreAndApellidos(String nombre, String apellidos);
 
+    Usuario findByNombre(String nombre);
+
 }
