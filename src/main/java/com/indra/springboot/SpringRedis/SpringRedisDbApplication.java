@@ -21,11 +21,5 @@ public class SpringRedisDbApplication {
 		return template;
 	}
 
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.requestMatcher(EndpointRequest.toAnyEndpoint())
-				.authorizeRequests((requests) -> requests.anyRequest().permitAll());
-		return http.build();
-	}
 
 }
