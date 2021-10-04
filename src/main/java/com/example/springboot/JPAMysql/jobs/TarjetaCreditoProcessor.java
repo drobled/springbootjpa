@@ -6,8 +6,10 @@ import org.springframework.batch.item.ItemProcessor;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Map;
 
 public class TarjetaCreditoProcessor implements ItemProcessor<TarjetaCredito, Riesgo> {
 
@@ -15,7 +17,8 @@ public class TarjetaCreditoProcessor implements ItemProcessor<TarjetaCredito, Ri
     public Riesgo process(TarjetaCredito tarjetaCredito){
         LocalDate hoy = LocalDate.now();
         LocalDate ultimaFecha = tarjetaCredito.getUltimoPago().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        long diasEntreMedias = Duration.between(hoy,ultimaFecha).toDays();
+        Period period = Period.between(hoy,ultimaFecha);
+        int diasEntreMedias = Math.abs(period.getDays());
 
         int riesgoI;
 
