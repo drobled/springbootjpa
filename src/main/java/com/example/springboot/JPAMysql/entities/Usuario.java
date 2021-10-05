@@ -20,6 +20,7 @@ public class Usuario {
 
     private String nombre;
     private String clave;
+    private String role;
     private String email;
     private String apellidos;
 
