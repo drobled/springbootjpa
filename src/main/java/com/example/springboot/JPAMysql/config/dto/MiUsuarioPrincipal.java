@@ -1,5 +1,6 @@
 package com.example.springboot.JPAMysql.config.dto;
 
+import com.example.springboot.JPAMysql.entities.Role;
 import com.example.springboot.JPAMysql.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,8 +10,10 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.Access;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class MiUsuarioPrincipal implements UserDetails {
 
@@ -25,8 +28,11 @@ public class MiUsuarioPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority( usuario.getRole());
-        return Arrays.asList(authority);
+        List<GrantedAuthority> permisos = new ArrayList<>();
+        for (Role rol : usuario.getRoles()) {
+            permisos.add(new SimpleGrantedAuthority(rol.getNombre()));
+        }
+        return permisos;
     }
 
     @Override

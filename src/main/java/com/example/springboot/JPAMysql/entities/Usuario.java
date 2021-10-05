@@ -20,9 +20,12 @@ public class Usuario {
 
     private String nombre;
     private String clave;
-    private String role;
     private String email;
     private String apellidos;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "usuarioId"), inverseJoinColumns = @JoinColumn(name = "rolId"))
+    private Set<Role> roles;
 
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
