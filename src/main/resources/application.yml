@@ -1,8 +1,16 @@
 spring:
-  # Spring properties in case you use different profiles
-  profiles:
-    active: dev
-  eureka:
-    client:
-      serviceUrl:
-        defaultZone: http://localhost:8761/eureka
+  application:
+    name: SaludoClient
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+endpoints:
+  restart:
+    enabled: true
+server:
+  port: 7211
