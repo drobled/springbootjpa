@@ -3,19 +3,16 @@ package com.recompensas.ProyectoRecompensas.entities;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@Getter
+@Document("empresas")
 @Setter
-@Document("usuarios")
-public class Usuario {
+@Getter
+public class Empresa {
 
-    private String dni;
+    private List<Trabajador> trabajadores;
 
-    private String telefono;
-
-    private List<Rol> roles;
+    private List<Cliente> clientes;
 
 }

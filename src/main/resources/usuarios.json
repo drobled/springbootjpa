@@ -1,0 +1,14 @@
+{
+  "usuarios": [
+    {
+      "nombre": "david",
+      "dni": "123",
+      "telefono": "321",
+      "roles": [
+        {
+          "nombre": "USER"
+        }
+      ]
+    }
+  ]
+}
