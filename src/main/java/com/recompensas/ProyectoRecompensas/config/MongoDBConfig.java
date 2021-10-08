@@ -27,20 +27,21 @@ public class MongoDBConfig {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    public void inicializar()  {
+    public void inicializar() {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(usuarios.getURI().getPath()));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray usuariosList = (JSONArray) jsonObject.get("usuarios");
             Iterator<JSONObject> iterator = usuariosList.iterator();
-            while(iterator.hasNext()){
-                jsonObject  = iterator.next();
+            while (iterator.hasNext()) {
+                jsonObject = iterator.next();
                 Gson gson = new Gson();
                 Usuario usuario = gson.fromJson(jsonObject.toJSONString(), Usuario.class);
-                usuarioRepositorio.save(usuario);
+                if (usuarioRepositorio.findByDni(usuario.getDni()) == null)
+                    usuarioRepositorio.save(usuario);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage());
         }
     }
