@@ -27,8 +27,7 @@ public class MongoDBConfig {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    @PostConstruct
-    public void repositoryPopulator()  {
+    public void inicializar()  {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(usuarios.getURI().getPath()));
