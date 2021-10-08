@@ -11,9 +11,14 @@ public class NavegacionController {
         return "index";
     }
 
-    @GetMapping(value="quienes")
+    @GetMapping(value="/quienes")
     public String quienes(){
         return "quienes-somos";
+    }
+
+    @GetMapping(value="/acciones")
+    public String acciones(){
+        return "acciones";
     }
 
 }
