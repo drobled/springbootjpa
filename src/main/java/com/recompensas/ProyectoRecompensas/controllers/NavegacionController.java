@@ -21,4 +21,9 @@ public class NavegacionController {
         return "acciones";
     }
 
+    @GetMapping(value="/login")
+    public String login(){
+        return "login";
+    }
+
 }
