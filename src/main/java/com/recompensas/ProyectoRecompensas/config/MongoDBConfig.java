@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 
+import javax.annotation.PostConstruct;
 import java.io.FileReader;
 import java.util.Iterator;
 
@@ -26,9 +27,8 @@ public class MongoDBConfig {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    @Bean
-    @Autowired
-    public void repositoryPopulator(ObjectMapper objectMapper)  {
+    @PostConstruct
+    public void repositoryPopulator()  {
         JSONParser parser = new JSONParser();
         try {
             Object obj = parser.parse(new FileReader(usuarios.getURI().getPath()));
